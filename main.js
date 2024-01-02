@@ -5,7 +5,7 @@ import {
 	tabSelection,
 	initAnnounceBar,
 	initCustomVideo,
-} from "./src/components";
+} from "@components";
 
 document.onLoad = init();
 

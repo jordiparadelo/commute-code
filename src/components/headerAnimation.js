@@ -1,7 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import Splitting from "splitting";
 
 gsap.registerPlugin(ScrollTrigger);
+
+export const component = document.querySelector(".rc-section_header")
 
 function headerAnimation() {
 	const headerCollection = [...document.querySelectorAll(".rc-section_header")];

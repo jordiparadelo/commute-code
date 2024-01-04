@@ -3,6 +3,8 @@ import dynamicImport from "@utils/dynamicImport";
 document.onLoad = init();
 
 function init() {
+
+	console.log(import.meta.env)
 	
 	const COMPONENTS = {
 		"#noise": "noise",

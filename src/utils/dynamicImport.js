@@ -1,7 +1,7 @@
 async function dynamicImport(componentName) {
     try {
       // TODO: Resolve import URL
-        const module = await import(`http://localhost:5173/src/components/${componentName}.js`);
+        const module = await import(`${import.meta.env.VITE_IMPORT_URL}${componentName}.js`);
         return module;
       } catch (error) {
         console.error(`⚠️ Error importing ${componentName}:, ${error.message}`);

@@ -1,5 +1,6 @@
 async function dynamicImport(componentName) {
     try {
+      // TODO: Resolve import URL
         const module = await import(`http://localhost:5173/src/components/${componentName}.js`);
         return module;
       } catch (error) {

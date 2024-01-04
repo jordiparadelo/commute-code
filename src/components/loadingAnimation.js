@@ -1,4 +1,4 @@
-import { gsap } from "gsap/gsap-core";
+import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 
 /* LOADING ANIMATION*/

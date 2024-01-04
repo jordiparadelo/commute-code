@@ -1,0 +1,26 @@
+name: Set Environment Variables
+
+on:
+  workflow_run:
+    workflows: build
+    types:
+      - completed
+
+jobs:
+  set-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set GitHub Username and Repo Name
+        id: gh-vars
+        run: |
+          echo "GITHUB_USERNAME=${{ github.event.repository.owner.login }}" >> $GITHUB_ENV
+          echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+
+      - name: Display GitHub Username and Repo Name
+        run: |
+          echo "GitHub Username: ${{ env.development.VITE_GITHUB_USERNAME }}"
+          echo "GitHub Repo Name: ${{ env.development.VITE_GITHUB_REPO_NAME }}"

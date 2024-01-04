@@ -20,7 +20,7 @@ function observeElement(element, componentName) {
           observer.disconnect();
           dynamicImport(componentName).then((module) => {
             if (module) {
-              console.log({target: entry.target, module: module.default})
+              // console.log({target: entry.target, module: module.default})
               module.default();
             }
           });

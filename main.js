@@ -1,4 +1,4 @@
-import dynamicImport from "@utils/dynamicImport";
+import dynamicImport from "./src/utils/dynamicImport";
 
 document.onLoad = init();
 

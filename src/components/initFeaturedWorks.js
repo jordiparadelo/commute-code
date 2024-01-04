@@ -2,6 +2,10 @@ import { gsap } from "gsap";
 
 /* FEATURED WORKS ANIMATIONS */
 function initFeaturedWorks() {
+	const element = document.querySelector(".work-item")
+
+	if(!element) return
+
 	const worksItems = [...document.querySelectorAll(".work-item")];
 
 	worksItems.forEach((item, index) =>

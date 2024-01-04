@@ -2,6 +2,10 @@ import "https://cdn.jsdelivr.net/gh/sarathsaleem/grained@master/grained.js"
 
 /* NOISE EFFECT */
 function noise() {
+	const element = document.querySelector('#noise')
+
+	if(!element) return
+
 	var options = {
 		animate: true,
 		patternWidth: 600,

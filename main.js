@@ -4,7 +4,7 @@ document.onLoad = init();
 
 function init() {
 
-	console.log(import.meta.env)
+	console.log(import.meta.env);
 	
 	const COMPONENTS = {
 		"#noise": "noise",

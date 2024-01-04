@@ -1,26 +1,38 @@
-name: Set Environment Variables
+name: Get GitHub Info
 
 on:
-  workflow_run:
-    workflows: build
+  release:
     types:
-      - completed
+      - created
 
 jobs:
-  set-env:
+  get-github-info:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set GitHub Username and Repo Name
-        id: gh-vars
+      - name: Set GitHub Info
         run: |
-          echo "GITHUB_USERNAME=${{ github.event.repository.owner.login }}" >> $GITHUB_ENV
-          echo "GITHUB_REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "VITE_GITHUB_USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+          echo "VITE_GITHUB_REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
 
-      - name: Display GitHub Username and Repo Name
+          # Extract release tag from the Git reference
+          RELEASE_TAG=$(echo "${{ github.ref }}" | sed -n 's|^refs/tags/||p')
+          echo "VITE_RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
+
+      - name: Display GitHub Info
         run: |
-          echo "GitHub Username: ${{ env.development.VITE_GITHUB_USERNAME }}"
-          echo "GitHub Repo Name: ${{ env.development.VITE_GITHUB_REPO_NAME }}"
+          echo "GitHub Username: $VITE_GITHUB_USERNAME"
+          echo "GitHub Repo Name: $VITE_GITHUB_REPO_NAME"
+          echo "Release Tag: $VITE_RELEASE_TAG"
+
+      - name: Use GitHub Info in Build Step
+        run: |
+          npm install
+          npm run build
+        env:
+          VITE_GITHUB_USERNAME: ${{ env.VITE_GITHUB_USERNAME }}
+          VITE_GITHUB_REPO_NAME: ${{ env.VITE_GITHUB_REPO_NAME }}
+          VITE_RELEASE_TAG: ${{ env.VITE_RELEASE_TAG }}

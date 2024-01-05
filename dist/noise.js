@@ -1,0 +1,1 @@
+import"https://cdn.jsdelivr.net/gh/sarathsaleem/grained@master/grained.js";function i(){if(document.querySelector("#noise")){var e={animate:!0,patternWidth:600,patternHeight:600,grainOpacity:.1,grainDensity:1,grainWidth:.7,grainHeight:.7};grained("#noise",e)}}export{i as default};

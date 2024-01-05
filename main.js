@@ -1,17 +1,19 @@
-import {
-	noise,
-	initSmoothScrolling,
-	initTextAnimation,
-	initFeaturedWorks,
-	loadingAnimation,
-} from "@components";
+import dynamicImport from "@utils/dynamicImport"
 
 document.onLoad = init();
 
+
 function init() {
-	noise();
-	initSmoothScrolling();
-	initTextAnimation();
-	initFeaturedWorks();
-	loadingAnimation();
+	
+	const COMPONENTS = {
+		"#noise": "noise",
+		'body': "initSmoothScrolling",
+		'body': "initTextAnimation",
+		".work-item": "initFeaturedWorks",
+		'.headline_video': "loadAnimation",
+	};
+
+	Object.entries(COMPONENTS).forEach(([element, moduleName]) => {
+		dynamicImport(element, moduleName);
+	});
 }

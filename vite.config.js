@@ -8,6 +8,7 @@ export default defineConfig({
 	},
 	// Configure the build settings
 	build: {
+		outDir: 'dist',
 		rollupOptions: {
 			input: {
 				main: "main.js", // Name of the entry point

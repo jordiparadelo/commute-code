@@ -1,0 +1,1 @@
+import{g as r}from"./index2.js";function c(){if(!document.querySelector(".work-item"))return;[...document.querySelectorAll(".work-item")].forEach((e,n)=>e.addEventListener("mouseenter",()=>i(n)))}function i(t){r.to(".work-cover-list",{y:(o,e)=>e.parentElement.clientHeight*-t,ease:"none",duration:"none"})}export{c as default};
